@@ -5,16 +5,17 @@
 { pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -37,7 +38,6 @@
     LC_TIME = "ro_RO.UTF-8";
   };
 
-
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
@@ -55,7 +55,10 @@
   users.users."cosmin" = {
     isNormalUser = true;
     description = "cosmin";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
   };
 
   # List packages installed in system profile. To search, run:
