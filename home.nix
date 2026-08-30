@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   home.username = "cosmin";
@@ -8,9 +8,12 @@
 
     # editor
     helix
+    # vscodium-fhs
+    vscode-fhs
 
     # lang
     zig
+    clang-tools
 
     nil
 
@@ -18,6 +21,12 @@
     ripgrep
     eza
     fzf
+    just
+    lldb
+
+    # everyday
+    discord
+    spotify
 
     # archives
     zip
@@ -26,6 +35,11 @@
 
     # games
     prismlauncher
+    heroic
+    steam
+
+    # browsers
+    inputs.helium.packages.${system}.default
   ];
 
   programs.git = {
@@ -34,6 +48,13 @@
       user.name = "Tatu Cosmin";
       user.email = "ctatudev@gmail.com";
       init.defaultBranch = "main";
+    };
+  };
+
+  programs.helix = {
+    enable = true;
+    settings = {
+      theme = "github_dark";
     };
   };
 
