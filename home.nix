@@ -8,8 +8,7 @@
 
     # editor
     helix
-    # vscodium-fhs
-    vscode-fhs
+    zed-editor
 
     # lang
     zig
@@ -36,11 +35,11 @@
     # games
     prismlauncher
     heroic
-    steam
 
     # browsers
     inputs.helium.packages.${system}.default
   ];
+
 
   programs.git = {
     enable = true;
