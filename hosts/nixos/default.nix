@@ -9,7 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ../../core/system.nix
-      ../../core/gnome.nix
+      ../../core/kde.nix
     ];
 
   networking.hostName = "nixos"; # Define your hostname.

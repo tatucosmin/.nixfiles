@@ -12,7 +12,14 @@
 
     # lang
     zig
+
+    # C++
+    libcxx
     clang-tools
+    clang
+    llvm
+
+    # compilers
 
     nil
 
@@ -22,6 +29,11 @@
     fzf
     just
     lldb
+    fastfetch
+
+    # Gnome
+    nautilus
+    seahorse
 
     # everyday
     discord
@@ -38,8 +50,8 @@
 
     # browsers
     inputs.helium.packages.${system}.default
+    firefox
   ];
-
 
   programs.git = {
     enable = true;
@@ -53,13 +65,26 @@
   programs.helix = {
     enable = true;
     settings = {
-      theme = "github_dark";
+      theme = "tokyonight";
+    };
+  };
+
+  programs.ghostty = {
+    enable = true;
+    settings = {
+      theme = "TokyoNight Night";
     };
   };
 
   programs.bash = {
     enable = true;
     enableCompletion = true;
+  };
+
+  programs.obsidian = {
+    enable = true;
+
+    vaults.notes.target = "~/Documents/Obsidian";
   };
 
   home.stateVersion = "26.05";
