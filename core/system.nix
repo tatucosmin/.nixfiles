@@ -13,6 +13,9 @@
   boot.loader.systemd-boot.configurationLimit = 15;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Login manager
+  services.displayManager.ly.enable = true;
+
   # Perform garbage collection weekly to maintain low disk usage
   nix.gc = {
     automatic = true;
