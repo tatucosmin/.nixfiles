@@ -38,7 +38,7 @@
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "backup";
 
-              home-manager.users.cosmin = import ./home.nix;
+              home-manager.users.cosmin = import ./users/cosmin;
             }
           ];
         };
