@@ -1,8 +1,8 @@
-rebuild:
-    nixos-rebuild switch --flake .
+rebuild sys:
+    nixos-rebuild switch --sudo --flake .#{{sys}}
 
-up: && rebuild
-    nix flake update
+up sys: && (rebuild sys)
+    sudo nix flake update
 
 gc:
     nix-collect-garbage

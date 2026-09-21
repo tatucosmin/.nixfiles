@@ -1,6 +1,7 @@
 { pkgs, inputs, ... }:
 
 {
+
   home.username = "cosmin";
   home.homeDirectory = "/home/cosmin";
 
@@ -20,7 +21,6 @@
     llvm
 
     # compilers
-
     nil
 
     # utils
@@ -30,6 +30,7 @@
     just
     lldb
     fastfetch
+    tree
 
     # Gnome
     nautilus
@@ -48,6 +49,7 @@
     prismlauncher
     heroic
 
+    inputs.fsel.packages.${system}.default
     # browsers
     inputs.helium.packages.${system}.default
     firefox
@@ -79,12 +81,6 @@
   programs.bash = {
     enable = true;
     enableCompletion = true;
-  };
-
-  programs.obsidian = {
-    enable = true;
-
-    vaults.notes.target = "~/Documents/Obsidian";
   };
 
   home.stateVersion = "26.05";

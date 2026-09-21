@@ -13,7 +13,7 @@
     ../../core/oxwm.nix
   ];
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "orng"; # Define your hostname.
   hardware.bluetooth.enable = true;
 
   # Configure NVIDIA drivers
@@ -22,13 +22,12 @@
   hardware.nvidia.open = true;
   hardware.nvidia.modesetting.enable = true;
 
+  services.xserver.screenSection = ''
+    Option "metamodes" "2560x1440_360 +0+0"
+  '';
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
-  # List packages installed in system profile. To search, run:
-  environment.systemPackages = with pkgs; [
-    # vim
-  ];
 
   system.stateVersion = "26.05"; # Did you read the comment?
 
