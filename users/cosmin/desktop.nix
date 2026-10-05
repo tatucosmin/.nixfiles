@@ -18,7 +18,6 @@
     r2modman
 
     inputs.helium.packages.${system}.default
-    firefox
 
   ];
 
