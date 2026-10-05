@@ -2,7 +2,8 @@
   programs.helix = {
     enable = true;
     settings = {
-      theme = "tokyonight";
+      theme = "amberwood";
     };
+
   };
 }

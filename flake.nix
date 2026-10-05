@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     helium = {
       url = "github:schembriaiden/helium-browser-nix-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -14,6 +15,11 @@
     fsel = {
       url = "github:Mjoyufull/fsel";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    otter-launcher = {
+      url = "github:kuokuo123/otter-launcher";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
     };
   };
 

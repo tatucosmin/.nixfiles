@@ -3,6 +3,7 @@
   home.packages = with pkgs; [
     # I wonder what this language is
     zig
+    zls
 
     # C++
     libcxx
@@ -13,7 +14,11 @@
     llvm
     lldb
 
-    # Other
+    # HTML
+    superhtml
+
+    # LSPs
     nil
+    lua-language-server
   ];
 }

@@ -5,8 +5,6 @@
 { pkgs, ... }:
 
 {
-  imports = [
-  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -59,6 +57,7 @@
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
+
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -74,6 +73,13 @@
       "networkmanager"
       "wheel"
     ];
+  };
+
+  services.flatpak.enable = true;
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    config.common.default = "gtk";
   };
 
   # List packages installed in system profile. To search, run:
@@ -92,6 +98,9 @@
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
     localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
   };
+
+  programs.gamemode.enable = true;
+  programs.gamescope.enable = true;
 
   system.stateVersion = "26.05"; # Did you read the comment?
 

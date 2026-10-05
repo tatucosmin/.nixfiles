@@ -9,7 +9,6 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../../core/system.nix
-    ../../core/kde.nix
     ../../core/oxwm.nix
   ];
 
@@ -18,6 +17,7 @@
 
   # Configure NVIDIA drivers
   hardware.graphics.enable = true;
+
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia.open = true;
   hardware.nvidia.modesetting.enable = true;
