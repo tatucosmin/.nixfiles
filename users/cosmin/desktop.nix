@@ -4,6 +4,12 @@
   config,
   ...
 }:
+let
+  sys = pkgs.stdenv.hostPlatform.system;
+
+  helium = inputs.helium.packages.${sys}.default;
+  mocktail = inputs.mocktail.packages.${sys}.default;
+in
 {
   home.packages = with pkgs; [
 
@@ -17,7 +23,8 @@
     xclicker
     r2modman
 
-    inputs.helium.packages.${system}.default
+    helium
+    mocktail
 
   ];
 

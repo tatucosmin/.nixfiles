@@ -4,7 +4,7 @@ local font = "GoogleSansCode Nerd Font:size=10"
 
 oxwm.bar.set_font(font)
 
-local tags = { "", "󰈹", "3", "4", "5", "6", "7", "8", "" }
+local tags = { "1", "2", "3", "4", "5", "6", "7", "8", "9" }
 
 oxwm.set_terminal(terminal)
 oxwm.set_modkey(modkey)
@@ -56,7 +56,7 @@ local blocks = {
     format = "{used}/{total} GB",
     interval = 5,
     color = colors.orange_d,
-    underline = true,
+    underline = false,
   }),
   oxwm.bar.block.static({
     text = "│",
@@ -67,9 +67,9 @@ local blocks = {
   oxwm.bar.block.datetime({
     format = "{}",
     date_format = "%H:%M",
-    interval = 60,
+    interval = 10,
     color = colors.white,
-    underline = true,
+    underline = false,
   }),
 };
 
@@ -79,6 +79,15 @@ oxwm.bar.set_blocks(blocks)
 oxwm.key.bind({ modkey }, "Return", oxwm.spawn(terminal))
 oxwm.key.bind({ modkey }, "Q", oxwm.client.kill())
 oxwm.key.bind({ modkey, "Shift" }, "Q", oxwm.quit())
+
+oxwm.key.bind({ modkey }, "bracketleft", oxwm.set_master_factor(-5))
+oxwm.key.bind({ modkey }, "bracketright", oxwm.set_master_factor(5))
+
+oxwm.key.bind({ modkey, "Shift" }, "bracketleft", oxwm.set_master_factor(-10))
+oxwm.key.bind({ modkey, "Shift" }, "bracketright", oxwm.set_master_factor(10))
+
+oxwm.key.bind({ modkey, "Shift" }, "R", oxwm.restart())
+oxwm.key.bind({ modkey, "Shift" }, "F", oxwm.client.toggle_fullscreen())
 
 oxwm.key.bind({ modkey }, "Space", oxwm.spawn(
   "alacritty --class fsel -o window.dimensions.columns=60 -o window.dimensions.lines=20 -e fsel -d"
@@ -107,8 +116,6 @@ oxwm.key.bind({ modkey, "Shift" }, "7", oxwm.tag.move_to(6));
 oxwm.key.bind({ modkey, "Shift" }, "8", oxwm.tag.move_to(7));
 oxwm.key.bind({ modkey, "Shift" }, "9", oxwm.tag.move_to(8));
 
-oxwm.key.bind({ modkey, "Shift" }, "R", oxwm.restart())
-oxwm.key.bind({ modkey, "Shift" }, "F", oxwm.client.toggle_fullscreen())
 
 
 oxwm.border.set_width(1)

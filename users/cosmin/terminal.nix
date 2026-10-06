@@ -1,14 +1,10 @@
-{ pkgs, inputs, ... }:
-let
-  unstable = import inputs.nixpkgs-unstable { system = pkgs.system; };
-in
+{ pkgs, ... }:
 {
   fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
     nerd-fonts.bigblue-terminal
-    # TODO: replace with stable version once released
-    unstable.nerd-fonts.googlesanscode
+    nerd-fonts.googlesanscode
   ];
 
   programs.alacritty = {
