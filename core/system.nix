@@ -90,6 +90,8 @@
     wget
     curl
     btop
+    man-pages
+    man-pages-posix
   ];
 
   programs.steam = {
