@@ -22,6 +22,9 @@ in
 
     xclicker
     r2modman
+    maim
+
+    obsidian
 
     helium
     mocktail

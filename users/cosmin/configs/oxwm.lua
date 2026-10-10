@@ -92,6 +92,8 @@ oxwm.key.bind({ modkey, "Shift" }, "F", oxwm.client.toggle_fullscreen())
 oxwm.key.bind({ modkey }, "Space", oxwm.spawn(
   "alacritty --class fsel -o window.dimensions.columns=60 -o window.dimensions.lines=20 -e fsel -d"
 ))
+oxwm.key.bind({}, "Print", oxwm.spawn({ "sh", "-c", "maim -s | xclip -selection clipboard -t image/png" }))
+oxwm.key.bind({ "Shift" }, "Print", oxwm.spawn({ "sh", "-c", "maim -o ~/screenshots/$(date +%s).png" }))
 
 oxwm.rule.add({ class = "fsel", floating = true })
 oxwm.set_floating_position("center")

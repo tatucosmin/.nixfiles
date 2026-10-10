@@ -17,8 +17,15 @@
     # HTML
     superhtml
 
-    # LSPs
+    # Python
+    python315
+    ruff
+    ty
+
+    # Nix
     nil
+
+    # Lua
     lua-language-server
   ];
 }
