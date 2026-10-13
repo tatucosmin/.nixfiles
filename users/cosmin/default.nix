@@ -1,3 +1,4 @@
+{ username, ... }:
 {
 
   imports = [
@@ -9,8 +10,8 @@
     ./editors.nix
   ];
 
-  home.username = "cosmin";
-  home.homeDirectory = "/home/cosmin";
+  home.username = username;
+  home.homeDirectory = if pkgs.stdenv.isDarwin then "/Users/${username}" else "/home/${username}";
 
   home.stateVersion = "26.05";
   programs.home-manager.enable = true;

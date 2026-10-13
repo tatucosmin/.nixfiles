@@ -3,16 +3,16 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     helium = {
       url = "github:schembriaiden/helium-browser-nix-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    stylix = {
-      url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     fsel = {
@@ -37,21 +37,41 @@
       home-manager,
       ...
     }@inputs:
+    let
+      username = "cosmin"
+    in
     {
       nixosConfigurations = {
         orng = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
+          specialArgs = { inherit inputs username; };
           modules = [
             ./hosts/orng/default.nix
 
             home-manager.nixosModules.home-manager
             {
-              home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager.extraSpecialArgs = { inherit inputs username; };
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "backup";
 
-              home-manager.users.cosmin = import ./users/cosmin;
+              home-manager.users.cosmin = import ./users/${username};
+            }
+          ];
+        };
+      };
+      darwinConfigurations = {
+        blck = nix-darwin.lib.darwinSystem {
+          specialArgs = { inherit inputs; };
+          modules = [
+            
+            home-manager.darwinModules.home-manager
+            {
+              home-manager.extraSpecialArgs = { inherit inputs username; };
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.backupFileExtension = "backup";
+
+              home-manager.users.cosmin = import ./users/${username};
             }
           ];
         };

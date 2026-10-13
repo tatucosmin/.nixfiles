@@ -13,6 +13,7 @@
     fastfetch
     tree
     glow
+    maim
 
     codecrafters-cli
     

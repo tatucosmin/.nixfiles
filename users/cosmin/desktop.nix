@@ -7,30 +7,34 @@
 let
   sys = pkgs.stdenv.hostPlatform.system;
 
+  inherit (pkgs.stdenv) isLinux isDarwin
+  
   helium = inputs.helium.packages.${sys}.default;
   mocktail = inputs.mocktail.packages.${sys}.default;
 in
 {
-  home.packages = with pkgs; [
+  home.packages = (with pkgs; [
 
     prismlauncher
-    heroic
 
-    discord
-    spotify-player
     spotify
-
-    xclicker
-    r2modman
-    maim
-
+    discord
     obsidian
 
     helium
-    mocktail
+    ])
+    ++ lib.optionals isLinux (with pkgs; [
+      xclicker
+
+      heroic
+      mocktail
+    ])
+    ++ lib.optionals isDarwin (with pkgs; [
+    ]);
 
   ];
 
-  xdg.configFile."oxwm/config.lua".source =
-    config.lib.file.mkOutOfStoreSymlink "/home/cosmin/nixos-config/users/cosmin/configs/oxwm.lua";
+  xdg.configFile."oxwm/config.lua" = lib.mkIf isLinux {
+    source = config.lib.file.mkOutOfStoreSymlink "/home/cosmin/nixos-config/users/cosmin/configs/oxwm.lua";
+  }
 }
