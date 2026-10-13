@@ -57,8 +57,9 @@
       };
       darwinConfigurations = {
         blck = nix-darwin.lib.darwinSystem {
-          specialArgs = { inherit inputs; };
+          specialArgs = { inherit inputs username; };
           modules = [
+            ./hosts/blck/default.nix
             
             home-manager.darwinModules.home-manager
             {

@@ -21,10 +21,9 @@
     unzip
 
   ])
-  ++ lib.optionals isLinux (with pkgs; [
+  ++ lib.optionals lib.isLinux (with pkgs; [
     maim
     xclip
-    
     inputs.fsel.packages.${system}.default
   ])
   # Currently no MacOS only pkgs
