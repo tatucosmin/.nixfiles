@@ -5,8 +5,6 @@
   home.packages = with pkgs; [
     nerd-fonts.bigblue-terminal
     nerd-fonts.googlesanscode
-
-    xclip
   ];
 
   programs.alacritty = {

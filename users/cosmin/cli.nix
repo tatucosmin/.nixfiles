@@ -3,7 +3,7 @@
 
   imports = [inputs.otter-launcher.homeModules.default];
   
-  home.packages = with pkgs; [
+  home.packages = (with pkgs; [
     ripgrep
     fzf
     eza
@@ -13,7 +13,6 @@
     fastfetch
     tree
     glow
-    maim
 
     codecrafters-cli
     
@@ -21,10 +20,15 @@
     xz
     unzip
 
+  ])
+  ++ lib.optionals isLinux (with pkgs; [
+    maim
+    xclip
+    
     inputs.fsel.packages.${system}.default
-  ];
+  ])
+  # Currently no MacOS only pkgs
+  # ++ lib.optionals isDarwin (with pkgs; [
+  # ]);
 
-  programs.otter-launcher = {
-    enable = true;
-  };
 }

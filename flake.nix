@@ -19,11 +19,6 @@
       url = "github:Mjoyufull/fsel";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    otter-launcher = {
-      url = "github:kuokuo123/otter-launcher";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
     mocktail = {
       url = "github:komaruworld/mocktail";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -34,11 +29,12 @@
     {
       self,
       nixpkgs,
+      nix-darwin,
       home-manager,
       ...
     }@inputs:
     let
-      username = "cosmin"
+      username = "cosmin";
     in
     {
       nixosConfigurations = {
@@ -54,7 +50,7 @@
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "backup";
 
-              home-manager.users.cosmin = import ./users/${username};
+              home-manager.users.${username} = import ./users/${username};
             }
           ];
         };
@@ -71,7 +67,7 @@
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "backup";
 
-              home-manager.users.cosmin = import ./users/${username};
+              home-manager.users.${username} = import ./users/${username};
             }
           ];
         };
