@@ -1,8 +1,6 @@
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, lib, ... }:
 {
 
-  imports = [inputs.otter-launcher.homeModules.default];
-  
   home.packages = (with pkgs; [
     ripgrep
     fzf
@@ -21,11 +19,11 @@
     unzip
 
   ])
-  ++ lib.optionals lib.isLinux (with pkgs; [
+  ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux (with pkgs; [
     maim
     xclip
     inputs.fsel.packages.${system}.default
-  ])
+  ]);
   # Currently no MacOS only pkgs
   # ++ lib.optionals isDarwin (with pkgs; [
   # ]);

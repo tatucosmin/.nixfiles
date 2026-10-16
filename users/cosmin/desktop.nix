@@ -2,12 +2,13 @@
   pkgs,
   inputs,
   config,
+  lib,
   ...
 }:
 let
   sys = pkgs.stdenv.hostPlatform.system;
 
-  inherit (pkgs.stdenv) isLinux isDarwin;
+  inherit (pkgs.stdenv.hostPlatform) isLinux isDarwin;
   
   helium = inputs.helium.packages.${sys}.default;
   mocktail = inputs.mocktail.packages.${sys}.default;
